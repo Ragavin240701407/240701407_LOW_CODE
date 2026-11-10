@@ -1,0 +1,3881 @@
+/*
+ * Author       : ragavi.n.2024.cse_rajalak208
+ * Generated on : 10-Nov-2026 11:40:24
+ * Version      : 1.0
+ */
+ application "Personalized Diet Recommendation System"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+
+ 	forms
+	{
+		form Dietary_Preferences
+		{
+			title 
+    		{
+				displayname = "Dietary Preferences"
+    			on add = "Add Dietary Preference"
+   	 			on edit = "Edit Dietary Preference"
+			}
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Preferred_Staple_Foods
+			(
+				type = checkboxes	
+				displayname = "Preferred Staple Foods"
+				values = {"White Rice","Brown Rice","Idli","Dosa","Chapati","Millet-based Foods","Ragi","Kambu (Pearl Millet)","Thinai (Foxtail Millet)","Varagu (Kodo Millet)"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have User
+			(
+				type = picklist	
+				values  = Users.ID
+    			displayformat = [User_Name]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Spice_Preference
+			(
+				type = picklist
+				displayname = "Spice Preference"
+				maxchar = 100
+				values = {"Mild","Medium","Spicy","Very Spicy"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Daily_Calorie_Goal
+			(
+				type = number
+				displayname = "Daily Calorie Goal"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Preferred_Lunch_Foods
+			(
+				type = checkboxes	
+				displayname = "Preferred Lunch Foods"
+				values = {"Rice and Sambar","Rasam Rice","Curd Rice","Lemon Rice","Tamarind Rice","Variety Rice","Meals with Poriyal and Kootu","Millet Meals","Other"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Preferred_Breakfast_Foods
+			(
+				type = checkboxes	
+				displayname = "Preferred Breakfast Foods"
+				values = {"Idli","Dosa","Pongal","Upma","Puttu","Idiyappam","Adai","Paniyaram","Other"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Preferred_Food_Style
+			(
+				type = checkboxes	
+				displayname = "Preferred Food Style"
+				values = {"Tamil Nadu Home-style Food","Chettinad Cuisine","Kongunadu Cuisine","Madurai-style Food","Chennai-style Food","Kerala Cuisine","Andhra Cuisine","North Indian Cuisine","Other"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Disliked_Foods
+			(
+    			type = textarea
+				displayname = "Disliked Foods"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Additional_Food_Preferences
+			(
+    			type = textarea
+				displayname = "Additional Food Preferences"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Diet_Type
+			(
+				type = picklist
+				displayname = "Diet Type"
+				maxchar = 100
+				values = {"Vegetarian","Non-Vegetarian","Eggetarian","Vegan","Pescatarian"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Non_Vegetarian_Food_Preferences
+			(
+				type = checkboxes	
+				displayname = "Non-Vegetarian Food Preferences"
+				values = {"Chicken","Mutton","Fish","Prawn","Egg","Other"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Diet_Type_and_Preferences
+			(
+				type = section
+				displayname = "Diet Type and Preferences"
+				visibility = true
+	 			row = 2
+	 			column = 0   
+				width = medium
+			)
+			Preferred_Meals_Per_Day
+			(
+				type = picklist
+				displayname = "Preferred Meals Per Day"
+				maxchar = 100
+				values = {"2","3","4","5","6"}
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Preferred_Dinner_Foods
+			(
+				type = checkboxes	
+				displayname = "Preferred Dinner Foods"
+				values = {"Idli","Dosa","Chapati","Idiyappam","Vegetable Upma","Millet-based Dishes","Other"}
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Additional_Preferences
+			(
+				type = section
+				displayname = "Additional Preferences"
+				visibility = true
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Created_Date
+			(
+    			type = datetime
+				displayname = "Created Date"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Dietary_Restrictions
+			(
+    			type = textarea
+				displayname = "Dietary Restrictions"
+				height = 13px
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Fitness_Goals
+		{
+			displayname = "Fitness Goals"
+			success message = "Fitness Goals added successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have User
+			(
+				type = picklist	
+				values  = Users.ID
+    			displayformat = [User_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Preferred_Physical_Activities
+			(
+				type = checkboxes	
+				displayname = "Preferred Physical Activities"
+				values = {"Walking","Running","Jogging","Cycling","Swimming","Yoga","Gym Workout","Strength Training","Calisthenics","Sports","No Regular Activity","Other"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Daily_Activity_Duration_Minutes
+			(
+				type = number
+				displayname = "Daily Activity Duration Minutes"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Primary_Fitness_Goal
+			(
+				type = picklist
+				displayname = "Primary Fitness Goal"
+				maxchar = 100
+				values = {"Weight Loss","Weight Gain","Muscle Building","Fat Loss","Weight Maintenance","General Fitness","Improved Stamina","Improved Flexibility","Healthy Lifestyle"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Motivation_Goal_Description
+			(
+    			type = textarea
+				displayname = "Motivation Goal Description"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Additional_Notes
+			(
+    			type = textarea
+				displayname = "Additional Notes"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Goal_Preferences
+			(
+				type = section
+				displayname = "Goal Preferences"
+	 			row = 2
+	 			column = 0   
+				width = medium
+			)
+			Current_Fitness_Level
+			(
+				type = picklist
+				displayname = "Current Fitness Level"
+				maxchar = 100
+				values = {"Beginner","Intermediate","Advanced"}
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Record_Information
+			(
+				type = section
+				displayname = "Record Information"
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Fitness_Goals_Section
+			(
+				type = section
+				displayname = "Fitness Goals"
+	 			row = 4
+	 			column = 0   
+				width = medium
+			)
+			Target_Weight_kg
+			(
+				type = decimal
+				displayname = "Target Weight kg"
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			User_Info
+			(
+				type = section
+				displayname = "User Information"
+	 			row = 5
+	 			column = 0   
+				width = medium
+			)
+			Target_Achievement_Date
+			(
+    			type = date
+				displayname = "Target Achievement Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 5
+	 			column = 1   
+				width = medium
+			)
+			Created_Date
+			(
+    			type = datetime
+				displayname = "Created Date"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 5
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Food_Scanner
+		{
+			displayname = "Food Scanner"
+			success message = "Food Scanner Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Food_Label_Image
+			(
+    			type = image
+				displayname = "Food Label Image"
+				source  = file
+				aspect ratio = original
+				camera = primary
+				show gallery = true
+				switch camera = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			OCR
+			(
+    			type = textarea
+				height = 100px
+				private = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+						AI_Properties
+						(
+									fieldtype = OCR
+									basefield = Food_Label_Image
+						)
+			)
+			AI_Analysis
+			(
+    			type = textarea
+				displayname = "AI Analysis"
+				height = 100px
+				private = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			OCR_Status
+			(
+				type = picklist
+				displayname = "OCR Status"
+				maxchar = 100
+				values = {"Pending","Processing","Completed","Failed"}
+				private = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Failed","Completed","Pending","Processing"}
+			}
+		}
+		form Health_Profile
+		{
+			displayname = "Health Profile"
+			success message = "Health Profile added successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have User
+			(
+				type = picklist	
+				values  = Users.ID
+    			displayformat = [User_Name]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Allergen_Categories
+			(
+				type = list	
+				displayname = "Allergen Categories"
+				values = {"Peanuts / Groundnuts","Tree Nuts","Milk and Dairy Products","Eggs","Fish","Prawns and Shellfish","Soy","Wheat / Gluten","Sesame Seeds (Ellu)","Coconut","Mustard Seeds (Kadugu)","Chickpeas and Legumes","Other"}
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Specific_Allergens
+			(
+    			type = textarea
+				displayname = "Specific Allergens"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Reaction_Symptoms
+			(
+				type = checkboxes	
+				displayname = "Reaction Symptoms"
+				values = {"Skin Rash","Itching","Swelling","Stomach Pain","Vomiting","Breathing Difficulty","Other"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Additional_Information
+			(
+				type = section
+				displayname = "Additional Information"
+				visibility = true
+	 			row = 2
+	 			column = 0   
+				width = medium
+			)
+			Allergy_Severity
+			(
+				type = picklist
+				displayname = "Allergy Severity"
+				maxchar = 100
+				values = {"Mild","Moderate","Severe"}
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Additional_Notes
+			(
+    			type = textarea
+				displayname = "Additional Notes"
+				height = 13px
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Diagnosis_Status
+			(
+				type = picklist
+				displayname = "Diagnosis Status"
+				maxchar = 100
+				values = {"Diagnosed by a Healthcare Professional","Not Diagnosed","Prefer Not to Say"}
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Has_Food_Allergies
+			(
+				type = radiobuttons
+				displayname = "Has Food Allergies"
+				maxchar = 100
+				values = {"Yes","No"}
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Condition_Categories
+			(
+				type = list	
+				displayname = "Condition Categories"
+				values = {"Type 1 Diabetes","Type 2 Diabetes","High Blood Pressure (Hypertension)","High Cholesterol","Thyroid Disorders","PCOS / PCOD","Anaemia","Obesity","Heart Conditions","Kidney Conditions","Gastric Problems / Acid Reflux","Lactose Intolerance","Other"}
+				height = 13px
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Specific_Conditions
+			(
+    			type = textarea
+				displayname = "Specific Conditions"
+				height = 13px
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Dietary_Considerations
+			(
+    			type = textarea
+				displayname = "Dietary Considerations"
+				height = 13px
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			User_Information
+			(
+				type = section
+				displayname = "User Information"
+				visibility = true
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Allergy_Information
+			(
+				type = section
+				displayname = "Allergy Information"
+				visibility = true
+	 			row = 4
+	 			column = 0   
+				width = medium
+			)
+			Health_Conditions
+			(
+				type = section
+				displayname = "Health Conditions"
+				visibility = true
+	 			row = 5
+	 			column = 0   
+				width = medium
+			)
+			Created_Date
+			(
+    			type = datetime
+				displayname = "Created Date"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 5
+	 			column = 1   
+				width = medium
+			)
+			Has_Health_Conditions
+			(
+				type = radiobuttons
+				displayname = "Has Health Conditions"
+				maxchar = 100
+				values = {"Yes","No"}
+	 			row = 5
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Meal_Plan_Details
+		{
+			displayname = "Meal Plan Details"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Meal_Plan
+			(
+				type = picklist	
+				displayname = "Meal Plan"
+				values  = Meal_Plans.ID
+    			displayformat = [Plan_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Meals
+			(
+				type = picklist	
+				values  = Meals.ID
+    			displayformat = [Meal_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			User
+			(
+				type = picklist	
+				values  = Users.ID
+    			displayformat = [User_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Start_Date
+			(
+    			type = date
+				displayname = "Start Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			End_Date
+			(
+    			type = date
+				displayname = "End Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Scheduled_Date
+			(
+    			type = date
+				displayname = "Scheduled Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Day_Number
+			(
+				type = number
+				displayname = "Day Number"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Meal_Type
+			(
+				type = picklist
+				displayname = "Meal Type"
+				maxchar = 100
+				values = {"Breakfast","Lunch","Dinner","Morning Snack","Evening Snack"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Serving_Quantity
+			(
+				type = decimal
+				displayname = "Serving Quantity"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Meal_Plans
+		{
+			displayname = "Meal Plans"
+			success message = "Meal Plan Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Plan_Name
+			(
+    			type = text
+				displayname = "Plan Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have User
+			(
+				type = picklist	
+				values  = Users.ID
+    			displayformat = [User_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Plan_Description
+			(
+    			type = textarea
+				displayname = "Plan Description"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Plan_Type
+			(
+				type = picklist
+				displayname = "Plan Type"
+				maxchar = 100
+				values = {"AI Generated","Admin Created"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Fitness_Goal
+			(
+				type = picklist
+				displayname = "Fitness Goal"
+				maxchar = 100
+				values = {"Weight Loss","Weight Gain","Muscle Building","Weight Maintenance","General Fitness","Healthy Lifestyle","Other"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Start_Date
+			(
+    			type = date
+				displayname = "Start Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have End_Date
+			(
+    			type = date
+				displayname = "End Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Plan_Duration_Days
+			(
+				type = number
+				displayname = "Plan Duration (Days)"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Daily_Calorie_Target_kcal
+			(
+				type = decimal
+				displayname = "Daily Calorie Target (kcal)"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Daily_Protein_Target_grams
+			(
+				type = decimal
+				displayname = "Daily Protein Target (grams)"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Daily_Carbohydrate_Target_grams
+			(
+				type = decimal
+				displayname = "Daily Carbohydrate Target (grams)"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Daily_Fat_Target_grams
+			(
+				type = decimal
+				displayname = "Daily Fat Target (grams)"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Plan_Status
+			(
+				type = picklist
+				displayname = "Plan Status"
+				maxchar = 100
+				values = {"Draft","Pending Review","Approved","Rejected","Active","Completed","Cancelled"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Admin_Comments
+			(
+    			type = textarea
+				displayname = "Admin Comments"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Reviewed_By
+			(
+    			type = text
+				displayname = "Reviewed By"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Review_Date
+			(
+    			type = datetime
+				displayname = "Review Date"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Created_Date
+			(
+    			type = datetime
+				displayname = "Created Date"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Pending Review","Approved","Rejected"}
+			}
+		}
+		form Meals
+		{
+			success message = "Meal added successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Carbohydrates
+			(
+				type = decimal
+				displayname = "Carbohydrates grams"
+				decimalplace = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Cuisine
+			(
+				type = picklist
+				maxchar = 100
+				values = {"Tamil Nadu","Chettinad","Kongunadu","South Indian","North Indian","Other"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Recipe_Instructions
+			(
+    			type = textarea
+				displayname = "Recipe Instructions"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Meal_Management
+			(
+				type = section
+				displayname = "Meal Management"
+				visibility = true
+	 			row = 2
+	 			column = 0   
+				width = medium
+			)
+			must have Meal_Name
+			(
+    			type = text
+				displayname = "Meal Name"
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Meal_Image
+			(
+    			type = image
+				displayname = "Meal Image"
+				source  = file
+				aspect ratio = original
+				camera = primary
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Main_Ingredients
+			(
+    			type = textarea
+				displayname = "Main Ingredients"
+				height = 13px
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			must have Food_Type
+			(
+				type = picklist
+				displayname = "Food Type"
+				maxchar = 100
+				values = {"Vegetarian","Non-Vegetarian","Vegan","Eggetarian"}
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Preparation_Method
+			(
+				type = picklist
+				displayname = "Preparation Method"
+				maxchar = 100
+				values = {"Steamed","Boiled","Grilled","Roasted","Sautéed","Fried","Baked","Other"}
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Contains_Allergens
+			(
+				type = checkboxes	
+				displayname = "Contains Allergens"
+				values = {"Peanuts","Tree Nuts","Milk and Dairy","Eggs","Fish","Shellfish","Soy","Wheat / Gluten","Sesame","Coconut","Mustard","Other"}
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Availability_Status
+			(
+				type = picklist
+				displayname = "Availability Status"
+				maxchar = 100
+				values = {"Available","Unavailable"}
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Nutritional_Info
+			(
+				type = section
+				displayname = "Nutritional Information"
+				visibility = true
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Meal_Description
+			(
+    			type = textarea
+				displayname = "Meal Description"
+				height = 13px
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Calories
+			(
+				type = decimal
+				displayname = "Calories kcal"
+				decimalplace = 0
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Protein
+			(
+				type = decimal
+				displayname = "Protein grams"
+				decimalplace = 0
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Ingredients_Preparation
+			(
+				type = section
+				displayname = "Ingredients and Preparation"
+				visibility = true
+	 			row = 4
+	 			column = 0   
+				width = medium
+			)
+			Additional_Notes
+			(
+    			type = textarea
+				displayname = "Additional Notes"
+				height = 13px
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Serving_Size
+			(
+				type = decimal
+				displayname = "Serving Size grams"
+				decimalplace = 0
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Fat
+			(
+				type = decimal
+				displayname = "Fat grams"
+				decimalplace = 0
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Fibre
+			(
+				type = decimal
+				displayname = "Fibre grams"
+				decimalplace = 0
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			must have Meal_Category
+			(
+				type = picklist
+				displayname = "Meal Category"
+				maxchar = 100
+				values = {"Breakfast","Lunch","Dinner","Evening Snack","Morning Snack"}
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Created_Date
+			(
+    			type = datetime
+				displayname = "Created Date"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Users
+		{
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Role
+			(
+				type = picklist
+				maxchar = 100
+				values = {"Admin","User"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			User_Name
+			(
+    			type = text
+				displayname = "User Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Email
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Date_of_Birth
+			(
+    			type = date
+				displayname = "Date of Birth"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Phone_Number
+			(
+    			type = phonenumber
+				displayname = "Phone Number"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Gender
+			(
+				type = picklist
+				maxchar = 100
+				values = {"Male","Female","Other"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Activity_Level
+			(
+				type = picklist
+				displayname = "Activity Level"
+				maxchar = 100
+				values = {"Sedentary","Lightly Active","Moderately Active","Very Active","Extremely Active"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Height
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Weight
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			BMI
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+    			Formula_Properties
+    			(
+    						value =  if(ifnull(input.Height,0) > 0,input.Weight / (input.Height / 100.0).power(2),0)
+    						visibility = false
+    						format = plaintext
+    			)
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		list Users_List
+		{
+			displayName = "Users List"
+			show all rows from Users    
+			(
+				User_Name as "User Name"
+				Email
+				Phone_Number as "Phone Number"
+				(
+					displayformat = plainnumber 
+				)
+				Date_of_Birth as "Date of Birth"
+				Gender
+				Height
+				Weight
+				Activity_Level as "Activity Level"
+				BMI
+				Role
+			)
+			sort by
+			(
+				User_Name ascending
+			)
+		}
+		default list All_Meal_Plans
+		{
+			displayName = "All Meal Plans"
+			show all rows from Meal_Plans  [Plan_Status == "Pending Review"]  
+			(
+				Plan_Name as "Plan Name"
+				User
+				Plan_Description as "Plan Description"
+				Plan_Type as "Plan Type"
+				Fitness_Goal as "Fitness Goal"
+				Start_Date as "Start Date"
+				End_Date as "End Date"
+				Plan_Duration_Days as "Plan Duration (Days)"
+				Daily_Calorie_Target_kcal as "Daily Calorie Target (kcal)"
+				Daily_Protein_Target_grams as "Daily Protein Target (grams)"
+				Daily_Carbohydrate_Target_grams as "Daily Carbohydrate Target (grams)"
+				Daily_Fat_Target_grams as "Daily Fat Target (grams)"
+				Plan_Status as "Plan Status"
+				Admin_Comments as "Admin Comments"
+				Reviewed_By as "Reviewed By"
+				Review_Date as "Review Date"
+				Created_Date as "Created Date"
+				Added_Time as "Added Time"
+				ID
+			)
+			group by
+			(
+				Plan_Status ascending
+			)
+			sort by
+			(
+				Added_Time descending
+			)
+		}
+		default list Meal_Plan_Details_Report
+		{
+			displayName = "Meal Plan Details Report"
+			show all rows from Meal_Plan_Details    
+			(
+				Meal_Plan as "Meal Plan"
+				Meals
+				User
+				Start_Date as "Start Date"
+				End_Date as "End Date"
+				Scheduled_Date as "Scheduled Date"
+				Day_Number as "Day Number"
+				Meal_Type as "Meal Type"
+				Serving_Quantity as "Serving Quantity"
+			)
+		}
+		list Dietary_Preferences_Report
+		{
+			displayName = "Dietary Preferences Report"
+			show all rows from Dietary_Preferences    
+			(
+				Preferred_Staple_Foods as "Preferred Staple Foods"
+				User
+				Spice_Preference as "Spice Preference"
+				Daily_Calorie_Goal as "Daily Calorie Goal"
+				Preferred_Lunch_Foods as "Preferred Lunch Foods"
+				Preferred_Breakfast_Foods as "Preferred Breakfast Foods"
+				Preferred_Food_Style as "Preferred Food Style"
+				Disliked_Foods as "Disliked Foods"
+				Additional_Food_Preferences as "Additional Food Preferences"
+				Diet_Type as "Diet Type"
+				Non_Vegetarian_Food_Preferences as "Non-Vegetarian Food Preferences"
+				Preferred_Meals_Per_Day as "Preferred Meals Per Day"
+				Preferred_Dinner_Foods as "Preferred Dinner Foods"
+				Created_Date as "Created Date"
+				Dietary_Restrictions as "Dietary Restrictions"
+			)
+		}
+		list Fitness_Goals_Report
+		{
+			displayName = "Fitness Goals Report"
+			show all rows from Fitness_Goals    
+			(
+				User
+				Preferred_Physical_Activities as "Preferred Physical Activities"
+				Daily_Activity_Duration_Minutes as "Daily Activity Duration Minutes"
+				Primary_Fitness_Goal as "Primary Fitness Goal"
+				Motivation_Goal_Description as "Motivation Goal Description"
+				Additional_Notes as "Additional Notes"
+				Current_Fitness_Level as "Current Fitness Level"
+				Target_Weight_kg as "Target Weight kg"
+				Target_Achievement_Date as "Target Achievement Date"
+				Created_Date as "Created Date"
+			)
+		}
+		list Health_Profile_Report
+		{
+			displayName = "Health Profile Report"
+			show all rows from Health_Profile    
+			(
+				User
+				Allergen_Categories as "Allergen Categories"
+				Specific_Allergens as "Specific Allergens"
+				Reaction_Symptoms as "Reaction Symptoms"
+				Allergy_Severity as "Allergy Severity"
+				Additional_Notes as "Additional Notes"
+				Diagnosis_Status as "Diagnosis Status"
+				Has_Food_Allergies as "Has Food Allergies"
+				Condition_Categories as "Condition Categories"
+				Specific_Conditions as "Specific Conditions"
+				Dietary_Considerations as "Dietary Considerations"
+				Created_Date as "Created Date"
+				Has_Health_Conditions as "Has Health Conditions"
+			)
+		}
+		list Meals_Report
+		{
+			displayName = "Meals Report"
+			show all rows from Meals    
+			(
+				Carbohydrates as "Carbohydrates grams"
+				Cuisine
+				Recipe_Instructions as "Recipe Instructions"
+				Meal_Image as "Meal Image"
+				Main_Ingredients as "Main Ingredients"
+				Food_Type as "Food Type"
+				Preparation_Method as "Preparation Method"
+				Contains_Allergens as "Contains Allergens"
+				Availability_Status as "Availability Status"
+				Meal_Description as "Meal Description"
+				Calories as "Calories kcal"
+				Protein as "Protein grams"
+				Additional_Notes as "Additional Notes"
+				Meal_Name as "Meal Name"
+				Serving_Size as "Serving Size grams"
+				Fat as "Fat grams"
+				Fibre as "Fibre grams"
+				Meal_Category as "Meal Category"
+				Created_Date as "Created Date"
+			)
+		}
+		default list All_Food_Scanners
+		{
+			displayName = "All Food Scanners"
+			show all rows from Food_Scanner    
+			(
+				Food_Label_Image as "Food Label Image"
+				AI_Analysis as "AI Analysis"
+				OCR_Status as "OCR Status"
+				OCR
+			)
+		}
+	}
+	pages
+	{
+		page User_Dashboard(int active_plan_count, int calorieTarget, float carbTarget, float fatTarget, int fitness_goal_count, int latest_meal_plan_id, int logged_in_user_id, int my_meal_plan_count, int pending_review_count, float proteinTarget)
+		{
+			displayname = "User Dashboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='50px'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n    action = 'OpenReport'\n\t\tparameters = 'User.ID=${logged_in_user_id}&amp;Plan_Status=Pending review' \n\t\tcomponentLinkName = 'All_Meal_Plans'\n\t\ttarget = 'same-window'\n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#000000'\n\tsize = '22px'\n\tbold = 'true' \n\tfontFamily = 'roboto-regular' \n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#285943'\n    borderWidth = '0px'\n\n\t  value = 'My Diet Dashboard'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='125px'\n>\n\t<pc \n\t\tpadding = '5px'\n\n\t\twidth = '50%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#F0F7F2'\n\n    action = 'OpenReport'\n\t\tparameters = 'Field_Link_Name=${page_variable}' \n\t\tcomponentLinkName = 'All_Meal_Plans'\n\t\ttarget = 'same-window'\n    borderColor = '#222326'\n    borderWidth = '0px'\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '0px'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='40px'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#26945B'\n\tsize = '30px'\n\tbold = 'true' \n\ttype = 'variable'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'COMMA'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#26945B'\n    borderWidth = '0px'\n\n\t  value = '${my_meal_plan_count}'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='28px'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n    action = 'OpenReport'\n\t\tparameters = 'User=${logged_in_user_id}' \n\t\tcomponentLinkName = 'All_Meal_Plans'\n\t\ttarget = 'same-window'\n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#285943'\n\tsize = '15px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#285943'\n    borderWidth = '0px'\n\n\t  value = 'My Meal Plans'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='22px'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#6B8174'\n\tsize = '11px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Total generated plans'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '5px'\n\n\t\twidth = '50%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#FFF6E8'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='40px'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#D58A24'\n\tsize = '30px'\n\tbold = 'true' \n\ttype = 'variable'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'COMMA'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#D58A24'\n    borderWidth = '0px'\n\n\t  value = '${pending_review_count}'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='28px'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n    action = 'OpenReport'\n\t\tparameters = 'User.ID=${logged_in_user_id}&amp;Plan_Status=Pending review' \n\t\tcomponentLinkName = 'All_Meal_Plans'\n\t\ttarget = 'same-window'\n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#9A651C'\n\tsize = '15px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#9A651C'\n    borderWidth = '0px'\n\n\t  value = 'Pending Review'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='22px'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#967B58'\n\tsize = '11px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Awaiting admin approval'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='125px'\n>\n\t<pc \n\t\tpadding = '5px'\n\n\t\twidth = '50%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#EDF4FC'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='40px'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#3478B9'\n\tsize = '30px'\n\tbold = 'true' \n\ttype = 'variable'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'COMMA'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#3478B9'\n    borderWidth = '0px'\n\n\t  value = '${active_plan_count}'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='28px'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n    action = 'OpenReport'\n\t\tparameters = 'User.ID=${logged_in_user_id}&amp;Plan_Status=Active' \n\t\tcomponentLinkName = 'All_Meal_Plans'\n\t\ttarget = 'same-window'\n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#285B8A'\n\tsize = '15px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#285B8A'\n    borderWidth = '0px'\n\n\t  value = 'Active Plans'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='22px'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#66819D'\n\tsize = '11px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Currently active'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '5px'\n\n\t\twidth = '50%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#F5EFFB'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='40px'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#8756B5'\n\tsize = '30px'\n\tbold = 'true' \n\ttype = 'variable'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'COMMA'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#8756B5'\n    borderWidth = '0px'\n\n\t  value = '${fitness_goal_count}'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='27px'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n    action = 'OpenReport'\n\t\tparameters = 'User.ID=${logged_in_user_id}' \n\t\tcomponentLinkName = 'All_Meal_Plans'\n\t\ttarget = 'same-window'\n    borderColor = '#222326'\n    borderWidth = '0px'\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '0px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#67418A'\n\tsize = '15px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Fitness Goal'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='22px'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#89759E'\n\tsize = '11px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Your primary goal'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<row>\n\t<column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Chart'\n\n\ttype = 'Stacked Web'\n\tbgColor = '#FFFFFF'\n\ttheme = 'theme1'\n\tlegendPos = 'center.top'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'Meal_Plans'\n\txfield = 'Plan_Duration_Days'\n\tyfields = 'count:Daily_Protein_Target_grams'\n/>\n\n</column><column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Chart 2'\n\n\ttype = 'Scatter'\n\tbgColor = '#FFFFFF'\n\ttheme = 'theme1'\n\tlegendPos = 'center.top'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'Meal_Plans'\n\txfield = 'Fitness_Goal'\n\tyfields = 'count:Plan_Duration_Days'\n/>\n\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel 3'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#000000'\n\tsize = '20px'\n\tbold = 'true' \n\tfontFamily = 'roboto-regular' \n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#000000'\n    borderWidth = '0px'\n\n\t  value = 'Nutrition Overview'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Nutrition Overview'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '15px'\n\tbgColor = '#FFF4E8'\n\n\t\twidth = '50%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<text \n\n\tcolor = '#A85B16'\n\tsize = '16px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = '\uD83D\uDD25 Daily Calories'\n>\n</text>\n\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<text \n\n\tcolor = '#27364B'\n\tsize = '33px'\n\tbold = 'true' \n\ttype = 'variable'\n\n\n\n\n\n\n\n\t  value = '${calorieTarget} kcal'\n>\n</text>\n\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<text \n\n\tcolor = '#64748B'\n\tsize = '15px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Daily target'\n>\n</text>\n\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '15px'\n\tbgColor = '#EAF3FF'\n\n\t\twidth = '50%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<text \n\n\tcolor = '#2563A6'\n\tsize = '16px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = '\uD83D\uDCAA Daily Protein'\n>\n</text>\n\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<text \n\n\tcolor = '#27364B'\n\tsize = '33px'\n\tbold = 'true' \n\ttype = 'variable'\n\n\n\n\n\n\n\n\t  value = '${proteinTarget} g'\n>\n</text>\n\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<text \n\n\tcolor = '#64748B'\n\tsize = '15px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Daily target'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '15px'\n\tbgColor = '#FFF8E5'\n\n\t\twidth = '50%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<text \n\n\tcolor = '#9A741C'\n\tsize = '16px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = '\uD83C\uDF3E Carbohydrates'\n>\n</text>\n\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<text \n\n\tcolor = '#27364B'\n\tsize = '33px'\n\tbold = 'true' \n\ttype = 'variable'\n\n\n\n\n\n\n\n\t  value = '${carbTarget} g'\n>\n</text>\n\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<text \n\n\tcolor = '#64748B'\n\tsize = '15px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Daily target'\n>\n</text>\n\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '15px'\n\tbgColor = '#E8F7F2'\n\n\t\twidth = '50%'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<text \n\n\tcolor = '#21836A'\n\tsize = '16px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = '\uD83E\uDD51 Daily Fat'\n>\n</text>\n\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<text \n\n\tcolor = '#27364B'\n\tsize = '33px'\n\tbold = 'true' \n\ttype = 'variable'\n\n\n\n\n\n\n\n\t  value = '${fatTarget} g'\n>\n</text>\n\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<text \n\n\tcolor = '#64748B'\n\tsize = '15px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Daily target'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel 1'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#000000'\n\tsize = '24px'\n\tbold = 'true' \n\tfontFamily = 'roboto-regular' \n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#000000'\n    borderWidth = '0px'\n\n\t  value = 'Your AI Diet Assistant'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '0px'\n\tpaddingLeft = '17px'\n\tpaddingRight = '17px'\n\tpaddingBottom = '17px'\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#000000'\n\tsize = '20px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#000000'\n    borderWidth = '0px'\n\n\t  value = 'Hello! I&apos;m your personal AI Diet Assistant. I can recommend meals based on your health profile, dietary preferences, allergies and fitness goals.  Let&apos;s find something healthy and delicious for you!'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '0px'\n\tpaddingLeft = '17px'\n\tpaddingRight = '17px'\n\tpaddingBottom = '17px'\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<button \n\t\tmargin = '0px'\n\tpaddingTop = '12px'\n\tpaddingLeft = '15px'\n\tpaddingRight = '15px'\n\tpaddingBottom = '12px'\n\n    action = 'ExecuteFunction'\n\t\t\texecuteWorkflow = 'afterConfirmation'\n\n\t\tfunctionName = 'validate_gemini_response'  \n\tcolor = '#FFFFFF'\n\tsize = '16px'\n    borderColor = '#FFFFFF'\n    borderWidth = '0px'\n\ttext ='Recommend Meals for Me'\n\t\tbgColor = 'theme'\n\t\tcornerRadius = '6px' \n\t\tsuccessMsg = 'Your personalized meal plan has been generated successfully and submitted for admin review!'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='50%'\n   \t>\n\t<panel elementName='Panel 4'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#000000'\n\tsize = '20px'\n\tbold = 'true' \n\tfontFamily = 'roboto-regular' \n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#000000'\n    borderWidth = '0px'\n\n\t  value = 'Your Recommended Meal Plan'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='50%'\n   \t>\n\t<panel elementName='Panel 2'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#000000'\n\tsize = '20px'\n\tbold = 'true' \n\tfontFamily = 'roboto-regular' \n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#000000'\n    borderWidth = '0px'\n\n\t  value = 'My Meal Plans'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='50%'\n   \t>\n\t<report \n\telementName='Report 1'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'Meal_Plan_Details_Report'\n\t\tcriteriaString = 'User.Email == zoho.loginuserid'\n\t\n\t\tiszreport = 'false'\n\t\t\t\t\tzc_Footer = 'false'\n\t\t\t\t\tzc_AddRec = 'false'\n\t\t\t\t\tzc_EditRec = 'false'\n\t\t\t\t\tzc_Print = 'false'\n\t\t\t\t\tzc_Export = 'false'\n\t\t\t\t\tzc_DelRec = 'false'\n\t\t\t\t\tzc_DuplRec = 'false'\n\t\t\t\t\tzc_Search = 'false'\n\t\t\t\t\tzc_EditBulkRec = 'false'\n\t\t\t\t\tzc_BulkDelete = 'false'\n\t\t\t\t\tzc_BulkDuplicate = 'false'\n\theightType = 'auto'\n\theightValue = '700'\n/>\n</column><column\n   \t\t width='50%'\n   \t>\n\t<report \n\telementName='Report'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'All_Meal_Plans'\n\t\n\t\tiszreport = 'false'\n\t\t\t\t\tzc_AddRec = 'false'\n\t\t\t\t\tzc_EditRec = 'false'\n\t\t\t\t\tzc_Print = 'false'\n\t\t\t\t\tzc_Export = 'false'\n\t\t\t\t\tzc_DelRec = 'false'\n\t\t\t\t\tzc_DuplRec = 'false'\n\t\t\t\t\tzc_Search = 'false'\n\t\t\t\t\tzc_EditBulkRec = 'false'\n\t\t\t\t\tzc_BulkDelete = 'false'\n\t\t\t\t\tzc_BulkDuplicate = 'false'\n\theightType = 'auto'\n\theightValue = '700'\n/>\n</column>\n</row>\n</column>\n</row>\n</layout>\n</zml>"
+			script
+			{
+				loggedInEmail = zoho.loginuserid;
+				userRecord = Users[Email == loggedInEmail];
+				if(userRecord.count() > 0)
+				{
+					userId = userRecord.ID;
+					input.logged_in_user_id = userId;
+					// Total meal plans
+					myPlans = Meal_Plans[User == userId];
+					input.my_meal_plan_count = myPlans.count();
+					// Pending review
+					pendingPlans = Meal_Plans[User == userId && Plan_Status == "Pending review"];
+					input.pending_review_count = pendingPlans.count();
+					// Active plans
+					activePlans = Meal_Plans[User == userId && Plan_Status == "Active"];
+					input.active_plan_count = activePlans.count();
+					// Fitness goals
+					fitnessGoals = Fitness_Goals[User == userId];
+					input.fitness_goal_count = fitnessGoals.count();
+					// Latest meal plan nutrition targets
+					latestPlan = Meal_Plans[User == userId] sort by Added_Time desc range from 0 to 0;
+					input.calorieTarget = 0;
+					input.proteinTarget = 0;
+					input.carbTarget = 0;
+					input.fatTarget = 0;
+					latest_meal_plan_record_id = 0;
+					if(latestPlan.count() > 0)
+					{
+						input.calorieTarget = ifnull(latestPlan.Daily_Calorie_Target_kcal,0).toNumber();
+						input.proteinTarget = ifnull(latestPlan.Daily_Protein_Target_grams,0);
+						input.carbTarget = ifnull(latestPlan.Daily_Carbohydrate_Target_grams,0);
+						input.fatTarget = ifnull(latestPlan.Daily_Fat_Target_grams,0);
+						latest_meal_plan_record_id = latestPlan.ID;
+					}
+				}
+				else
+				{
+					input.my_meal_plan_count = 0;
+					input.pending_review_count = 0;
+					input.active_plan_count = 0;
+					input.fitness_goal_count = 0;
+				}
+			}
+		}
+	}
+
+
+		 functions
+		 {
+			 Deluge
+			 {
+				 string generate_ai_meal_plan()
+                 {
+                 	// STEP 1: Identify logged-in user
+                 	profile = thisapp.get_logged_in_user_profile();
+                 	if(profile.get("found") != true)
+                 	{
+                 		return "Error: User profile not found.";
+                 	}
+                 	userId = profile.get("user_id");
+                 	// STEP 2: Fetch latest user profiles
+                 	dietaryRecord = Dietary_Preferences[User == userId] sort by Created_Date desc range from 0 to 0;
+                 	healthRecord = Health_Profile[User == userId] sort by Created_Date desc range from 0 to 0;
+                 	fitnessRecord = Fitness_Goals[User == userId] sort by Created_Date desc range from 0 to 0;
+                 	if(dietaryRecord.count() == 0)
+                 	{
+                 		return "Please complete your Dietary Preferences form.";
+                 	}
+                 	if(healthRecord.count() == 0)
+                 	{
+                 		return "Please complete your Health Profile form.";
+                 	}
+                 	if(fitnessRecord.count() == 0)
+                 	{
+                 		return "Please complete your Fitness Goals form.";
+                 	}
+                 	// STEP 3: Prepare dietary preferences
+                 	dietaryData = Map();
+                 	for each  d in dietaryRecord
+                 	{
+                 		dietaryData.put("diet_type",d.Diet_Type);
+                 		dietaryData.put("dietary_restrictions",d.Dietary_Restrictions);
+                 		dietaryData.put("preferred_meals_per_day",d.Preferred_Meals_Per_Day);
+                 		dietaryData.put("preferred_staple_foods",d.Preferred_Staple_Foods);
+                 		dietaryData.put("preferred_breakfast_foods",d.Preferred_Breakfast_Foods);
+                 		dietaryData.put("preferred_lunch_foods",d.Preferred_Lunch_Foods);
+                 		dietaryData.put("preferred_dinner_foods",d.Preferred_Dinner_Foods);
+                 		dietaryData.put("preferred_food_style",d.Preferred_Food_Style);
+                 		dietaryData.put("non_vegetarian_preferences",d.Non_Vegetarian_Food_Preferences);
+                 		dietaryData.put("disliked_foods",d.Disliked_Foods);
+                 		dietaryData.put("spice_preference",d.Spice_Preference);
+                 		dietaryData.put("daily_calorie_goal",d.Daily_Calorie_Goal);
+                 		dietaryData.put("additional_preferences",d.Additional_Food_Preferences);
+                 	}
+                 	// STEP 4: Prepare health information
+                 	healthData = Map();
+                 	for each  h in healthRecord
+                 	{
+                 		healthData.put("has_food_allergies",h.Has_Food_Allergies);
+                 		healthData.put("allergen_categories",h.Allergen_Categories);
+                 		healthData.put("specific_allergens",h.Specific_Allergens);
+                 		healthData.put("reaction_symptoms",h.Reaction_Symptoms);
+                 		healthData.put("allergy_severity",h.Allergy_Severity);
+                 		healthData.put("diagnosis_status",h.Diagnosis_Status);
+                 		healthData.put("dietary_considerations",h.Dietary_Considerations);
+                 		healthData.put("has_health_conditions",h.Has_Health_Conditions);
+                 		healthData.put("condition_categories",h.Condition_Categories);
+                 		healthData.put("specific_conditions",h.Specific_Conditions);
+                 		healthData.put("additional_notes",h.Additional_Notes);
+                 	}
+                 	// STEP 5: Prepare fitness goals
+                 	fitnessData = Map();
+                 	for each  f in fitnessRecord
+                 	{
+                 		fitnessData.put("primary_fitness_goal",f.Primary_Fitness_Goal);
+                 		fitnessData.put("current_fitness_level",f.Current_Fitness_Level);
+                 		fitnessData.put("target_weight_kg",f.Target_Weight_kg);
+                 		fitnessData.put("daily_activity_duration_minutes",f.Daily_Activity_Duration_Minutes);
+                 		fitnessData.put("preferred_physical_activities",f.Preferred_Physical_Activities);
+                 		fitnessData.put("motivation_goal_description",f.Motivation_Goal_Description);
+                 		fitnessData.put("target_achievement_date",f.Target_Achievement_Date);
+                 		fitnessData.put("additional_notes",f.Additional_Notes);
+                 	}
+                 	// STEP 6: Fetch existing meals
+                 	mealCatalog = List();
+                 	for each  mealRecord in Meals[ID != 0]
+                 	{
+                 		meal = Map();
+                 		meal.put("meal_id",mealRecord.ID);
+                 		meal.put("meal_name",mealRecord.Meal_Name);
+                 		meal.put("meal_category",mealRecord.Meal_Category);
+                 		meal.put("food_type",mealRecord.Food_Type);
+                 		meal.put("calories",mealRecord.Calories);
+                 		meal.put("protein",mealRecord.Protein);
+                 		meal.put("carbohydrates",mealRecord.Carbohydrates);
+                 		meal.put("fibre",mealRecord.Fibre);
+                 		meal.put("fat",mealRecord.Fat);
+                 		meal.put("contains_allergens",mealRecord.Contains_Allergens);
+                 		meal.put("cuisine",mealRecord.Cuisine);
+                 		meal.put("main_ingredients",mealRecord.Main_Ingredients);
+                 		meal.put("serving_size",mealRecord.Serving_Size);
+                 		meal.put("recipe_instructions",mealRecord.Recipe_Instructions);
+                 		mealCatalog.add(meal);
+                 	}
+                 	if(mealCatalog.size() == 0)
+                 	{
+                 		return "No meals found in the Meals form.";
+                 	}
+                 	// STEP 7: Prepare Gemini prompt
+                 	prompt = "Create a personalized meal recommendation using ONLY the supplied meal catalogue. " + "Never invent meal names or IDs. " + "Avoid all known allergens and dietary restrictions. " + "Respect the user's diet type, preferences and fitness goal. " + "If no meal is safe, return an empty recommended_meals array. " + "Return valid JSON only with plan_explanation and recommended_meals. " + "\nDiet type: " + ifnull(dietaryData.get("diet_type"),"Not provided") + "\nRestrictions: " + ifnull(dietaryData.get("dietary_restrictions"),"Not provided") + "\nDisliked foods: " + ifnull(dietaryData.get("disliked_foods"),"Not provided") + "\nCalorie goal: " + ifnull(dietaryData.get("daily_calorie_goal"),"Not provided") + "\nAllergies: " + ifnull(healthData.get("specific_allergens"),"Not provided") + "\nAllergen categories: " + ifnull(healthData.get("allergen_categories"),"Not provided") + "\nHealth conditions: " + ifnull(healthData.get("specific_conditions"),"Not provided") + "\nFitness goal: " + ifnull(fitnessData.get("primary_fitness_goal"),"Not provided") + "\nAvailable meals: " + mealCatalog.toString();
+                 	// STEP 8: Build Gemini API request
+                 	payload = Map();
+                 	contents = List();
+                 	content = Map();
+                 	parts = List();
+                 	part = Map();
+                 	part.put("text",prompt);
+                 	parts.add(part);
+                 	content.put("parts",parts);
+                 	content.put("role","user");
+                 	contents.add(content);
+                 	payload.put("contents",contents);
+                 	// STEP 9: Configure Gemini response
+                 	generationConfig = Map();
+                 	generationConfig.put("maxOutputTokens",2048);
+                 	generationConfig.put("responseMimeType","application/json");
+                 	thinkingConfig = Map();
+                 	thinkingConfig.put("thinkingLevel","LOW");
+                 	generationConfig.put("thinkingConfig",thinkingConfig);
+                 	payload.put("generationConfig",generationConfig);
+                 	// STEP 10: Send request to Gemini
+                 	headers = Map();
+                 	headers.put("Content-Type","application/json");
+                 	response = invokeurl
+                 	[
+                 		url :"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent"
+                 		type :POST
+                 		body:payload.toString()
+                 		headers:headers
+                 		detailed:true
+                 		connection:"gemini_admin_connection"
+                 	];
+                 	// STEP 11: Return Gemini response for validation
+                 	// STEP 11: Validate Gemini API response
+                 	// Check HTTP response status
+                 	responseCode = response.get("responseCode");
+                 	if(responseCode != 200)
+                 	{
+                 		return "Error: Gemini API request failed. Response: " + response.toString();
+                 	}
+                 	// Extract response body
+                 	responseBody = response.get("responseText");
+                 	if(responseBody == null)
+                 	{
+                 		return "Error: Gemini returned an empty response.";
+                 	}
+                 	// Extract candidates
+                 	candidates = responseBody.get("candidates");
+                 	if(candidates == null || candidates.size() == 0)
+                 	{
+                 		return "Error: Gemini did not generate any recommendations.";
+                 	}
+                 	// Get the first candidate
+                 	candidate = candidates.get(0);
+                 	// Check whether generation completed successfully
+                 	finishReason = candidate.get("finishReason");
+                 	if(finishReason != "STOP")
+                 	{
+                 		return "Error: Gemini response is incomplete. Finish reason: " + finishReason;
+                 	}
+                 	// Extract generated JSON text
+                 	contentData = candidate.get("content");
+                 	partsData = contentData.get("parts");
+                 	if(partsData == null || partsData.size() == 0)
+                 	{
+                 		return "Error: Gemini returned no recommendation content.";
+                 	}
+                 	firstPart = partsData.get(0);
+                 	generatedText = firstPart.get("text");
+                 	if(generatedText == null || generatedText == "")
+                 	{
+                 		return "Error: Gemini returned empty recommendation text.";
+                 	}
+                 	// Parse JSON response
+                 	parsedResponse = generatedText.toMap();
+                 	// Verify required JSON fields
+                 	if(parsedResponse.get("plan_explanation") == null || parsedResponse.get("recommended_meals") == null)
+                 	{
+                 		return "Error: Gemini response is missing required fields.";
+                 	}
+                 	// Return parsed JSON for the next validation stage
+                 	return response.toString();
+                 }
+				 map get_logged_in_user_profile()
+                 {
+                 	loggedInEmail = zoho.loginuserid;
+                 	result = Map();
+                 	result.put("login_email",loggedInEmail);
+                 	userRecord = Users[Email == loggedInEmail];
+                 	if(userRecord.count() > 0)
+                 	{
+                 		result.put("found",true);
+                 		result.put("user_id",userRecord.ID);
+                 		result.put("user_name",userRecord.User_Name);
+                 	}
+                 	else
+                 	{
+                 		result.put("found",false);
+                 		result.put("message","No matching user profile found.");
+                 	}
+                 	return result;
+                 }
+				 int get_my_meal_plan_count()
+                 {
+                 	profile = thisapp.get_logged_in_user_profile();
+                 	if(profile.get("found") == true)
+                 	{
+                 		userId = profile.get("user_id");
+                 		myPlans = Meal_Plans[User == userId];
+                 		return myPlans.count();
+                 	}
+                 	return 0;
+                 }
+				 string review_meal_plan(int planID, string decision, string comments)
+                 {
+                 	// STEP 1: Identify logged-in user
+                 	profile = thisapp.get_logged_in_user_profile();
+                 	if(profile.get("found") != true)
+                 	{
+                 		return "Review Failed: User profile not found.";
+                 	}
+                 	userId = profile.get("user_id");
+                 	// STEP 2: Verify administrator role
+                 	adminRecord = Users[ID == userId];
+                 	if(adminRecord.count() == 0)
+                 	{
+                 		return "Review Failed: User record not found.";
+                 	}
+                 	if(adminRecord.Role != "Admin")
+                 	{
+                 		return "Access Denied: Only administrators can review meal plans.";
+                 	}
+                 	// STEP 3: Validate decision
+                 	if(decision != "Approved" && decision != "Rejected")
+                 	{
+                 		return "Review Failed: Invalid decision.";
+                 	}
+                 	// STEP 4: Find meal plan
+                 	planRecord = Meal_Plans[ID == planID];
+                 	if(planRecord.count() == 0)
+                 	{
+                 		return "Review Failed: Meal plan not found.";
+                 	}
+                 	// STEP 5: Check current status
+                 	if(planRecord.Plan_Status != "Pending Review")
+                 	{
+                 		return "Review Failed: Only pending meal plans can be reviewed.";
+                 	}
+                 	// STEP 6: Update review details
+                 	planRecord.Plan_Status=decision;
+                 	planRecord.Admin_Comments=comments;
+                 	planRecord.Reviewed_By=adminRecord.User_Name;
+                 	planRecord.Review_Date=zoho.currenttime;
+                 	// STEP 7: Return result
+                 	return "Success: Meal plan " + decision + " successfully. Plan ID: " + planID;
+                 }
+				 string sync_user_to_crm(int userID)
+                 {
+                 	userRecord = Users[ID == userID];
+                 	if(userRecord.count() == 0)
+                 	{
+                 		return "Error: User not found in Creator.";
+                 	}
+                 	if(ifnull(userRecord.Email,"") == "" || ifnull(userRecord.User_Name,"") == "")
+                 	{
+                 		return "Error: User name or email is missing.";
+                 	}
+                 	searchResponse = zoho.crm.v8.searchRecords("Contacts","(Email:equals:" + userRecord.Email + ")",1,200,Map(),"zoho_crm_connection");
+                 	contactData = Map();
+                 	contactData.put("Last_Name",userRecord.User_Name);
+                 	contactData.put("Email",userRecord.Email);
+                 	contactData.put("Phone",userRecord.Phone_Number);
+                 	if(searchResponse.size() > 0)
+                 	{
+                 		crmContactID = searchResponse.get(0).get("id");
+                 		updateResponse = zoho.crm.v8.updateRecord("Contacts",crmContactID.toLong(),contactData,Map(),"zoho_crm_connection");
+                 		return "CRM Contact updated: " + updateResponse.toString();
+                 	}
+                 	else
+                 	{
+                 		createResponse = zoho.crm.v8.createRecord("Contacts",contactData,Map(),"zoho_crm_connection");
+                 		return "CRM Contact creation response: " + createResponse.toString();
+                 	}
+                 }
+				 string test_gemini_connection()
+                 {
+                 	payload = Map();
+                 	contents = List();
+                 	content = Map();
+                 	parts = List();
+                 	part = Map();
+                 	part.put("text","Hello Gemini! Reply with: Gemini connection successful.");
+                 	parts.add(part);
+                 	content.put("parts",parts);
+                 	content.put("role","user");
+                 	contents.add(content);
+                 	payload.put("contents",contents);
+                 	headers = Map();
+                 	headers.put("Content-Type","application/json");
+                 	response = invokeurl
+                 	[
+                 		url :"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent"
+                 		type :POST
+                 		body:payload.toString()
+                 		headers:headers
+                 		detailed:true
+                 		connection:"gemini_admin_connection"
+                 	];
+                 	return response.toString();
+                 }
+				 string validate_gemini_response()
+                 {
+                 	// STEP 1: Identify logged-in user
+                 	profile = thisapp.get_logged_in_user_profile();
+                 	if(profile.get("found") != true)
+                 	{
+                 		return "Validation Failed: User profile not found.";
+                 	}
+                 	userId = profile.get("user_id");
+                 	// STEP 2: Fetch latest health profile
+                 	healthRecord = Health_Profile[User == userId] sort by Created_Date desc range from 0 to 0;
+                 	if(healthRecord.count() == 0)
+                 	{
+                 		return "Validation Failed: Health Profile not found.";
+                 	}
+                 	userCategories = List();
+                 	specificText = "";
+                 	for each  h in healthRecord
+                 	{
+                 		userCategories = ifnull(h.Allergen_Categories,List());
+                 		specificText = ifnull(h.Specific_Allergens,"").toLowerCase();
+                 	}
+                 	// STEP 3: Generate Gemini response
+                 	geminiResult = thisapp.generate_ai_meal_plan();
+                 	if(geminiResult == null || geminiResult == "")
+                 	{
+                 		return "Validation Failed: Empty Gemini response.";
+                 	}
+                 	// STEP 4: Parse outer API response
+                 	responseMap = Map();
+                 	try 
+                 	{
+                 		responseMap = geminiResult.toMap();
+                 	}	catch (e)
+                 	{
+                 		return "Validation Failed: Invalid API response. " + geminiResult;
+                 	}
+                 	responseCode = responseMap.get("responseCode");
+                 	if(responseCode == null || responseCode != 200)
+                 	{
+                 		return "Validation Failed: Gemini API returned an error.";
+                 	}
+                 	responseBody = responseMap.get("responseText");
+                 	if(responseBody == null)
+                 	{
+                 		return "Validation Failed: Response body missing.";
+                 	}
+                 	// STEP 5: Check Gemini completion
+                 	candidates = responseBody.get("candidates");
+                 	if(candidates == null || candidates.size() == 0)
+                 	{
+                 		return "Validation Failed: No Gemini candidates.";
+                 	}
+                 	candidate = candidates.get(0);
+                 	if(candidate.get("finishReason") != "STOP")
+                 	{
+                 		return "Validation Failed: Incomplete Gemini response.";
+                 	}
+                 	// STEP 6: Extract generated JSON
+                 	parts = candidate.get("content").get("parts");
+                 	if(parts == null || parts.size() == 0)
+                 	{
+                 		return "Validation Failed: Gemini text missing.";
+                 	}
+                 	generatedText = parts.get(0).get("text");
+                 	mealPlan = Map();
+                 	try 
+                 	{
+                 		mealPlan = generatedText.toMap();
+                 	}	catch (e)
+                 	{
+                 		return "Validation Failed: Invalid meal plan JSON.";
+                 	}
+                 	if(mealPlan.get("plan_explanation") == null)
+                 	{
+                 		return "Validation Failed: Plan explanation missing.";
+                 	}
+                 	recommendedMeals = mealPlan.get("recommended_meals");
+                 	if(recommendedMeals == null || recommendedMeals.size() == 0)
+                 	{
+                 		return "Validation Failed: No recommended meals.";
+                 	}
+                 	// STEP 7: Verify actual meal records
+                 	validatedCount = 0;
+                 	totalCalories = 0;
+                 	totalProtein = 0;
+                 	totalCarbohydrates = 0;
+                 	totalFat = 0;
+                 	for each  meal in recommendedMeals
+                 	{
+                 		mealId = meal.get("meal_id");
+                 		if(mealId == null)
+                 		{
+                 			return "Validation Failed: Meal ID missing.";
+                 		}
+                 		actualMeal = Meals[ID == mealId.toLong()];
+                 		if(actualMeal.count() == 0)
+                 		{
+                 			return "Validation Failed: Meal ID " + mealId + " does not exist.";
+                 		}
+                 		if(actualMeal.Availability_Status != "Available")
+                 		{
+                 			return "Validation Failed: " + actualMeal.Meal_Name + " is unavailable.";
+                 		}
+                 		// STEP 8: Get actual allergen values from Zoho
+                 		mealAllergens = ifnull(actualMeal.Contains_Allergens,List());
+                 		mealIngredients = ifnull(actualMeal.Main_Ingredients,"").toLowerCase();
+                 		allergyConflict = false;
+                 		// STEP 9: Match allergen categories
+                 		for each  category in userCategories
+                 		{
+                 			if(category == "Peanuts / Groundnuts" && mealAllergens.contains("Peanuts"))
+                 			{
+                 				allergyConflict = true;
+                 			}
+                 			if(category == "Tree Nuts" && mealAllergens.contains("Tree Nuts"))
+                 			{
+                 				allergyConflict = true;
+                 			}
+                 			if(category == "Milk and Dairy Products" && mealAllergens.contains("Milk and Dairy"))
+                 			{
+                 				allergyConflict = true;
+                 			}
+                 			if(category == "Eggs" && mealAllergens.contains("Eggs"))
+                 			{
+                 				allergyConflict = true;
+                 			}
+                 			if(category == "Fish" && mealAllergens.contains("Fish"))
+                 			{
+                 				allergyConflict = true;
+                 			}
+                 			if(category == "Prawns and Shellfish" && mealAllergens.contains("Shellfish"))
+                 			{
+                 				allergyConflict = true;
+                 			}
+                 			if(category == "Soy" && mealAllergens.contains("Soy"))
+                 			{
+                 				allergyConflict = true;
+                 			}
+                 			if(category == "Wheat / Gluten" && mealAllergens.contains("Wheat / Gluten"))
+                 			{
+                 				allergyConflict = true;
+                 			}
+                 			if(category == "Sesame Seeds (Ellu)" && mealAllergens.contains("Sesame"))
+                 			{
+                 				allergyConflict = true;
+                 			}
+                 			if(category == "Coconut" && mealAllergens.contains("Coconut"))
+                 			{
+                 				allergyConflict = true;
+                 			}
+                 			if(category == "Mustard Seeds (Kadugu)" && mealAllergens.contains("Mustard"))
+                 			{
+                 				allergyConflict = true;
+                 			}
+                 			if(category == "Other" && mealAllergens.contains("Other"))
+                 			{
+                 				allergyConflict = true;
+                 			}
+                 			// Chickpeas and legumes: check actual ingredients
+                 			if(category == "Chickpeas and Legumes")
+                 			{
+                 				if(mealIngredients.contains("chickpea") || mealIngredients.contains("legume") || mealIngredients.contains("lentil") || mealIngredients.contains("gram"))
+                 				{
+                 					allergyConflict = true;
+                 				}
+                 			}
+                 		}
+                 		// STEP 10: Match specific allergen names
+                 		if(specificText.contains("peanut") || specificText.contains("groundnut"))
+                 		{
+                 			if(mealAllergens.contains("Peanuts"))
+                 			{
+                 				allergyConflict = true;
+                 			}
+                 		}
+                 		if(specificText.contains("almond") || specificText.contains("cashew") || specificText.contains("walnut") || specificText.contains("pistachio"))
+                 		{
+                 			if(mealAllergens.contains("Tree Nuts"))
+                 			{
+                 				allergyConflict = true;
+                 			}
+                 		}
+                 		if(specificText.contains("milk") || specificText.contains("dairy") || specificText.contains("lactose"))
+                 		{
+                 			if(mealAllergens.contains("Milk and Dairy"))
+                 			{
+                 				allergyConflict = true;
+                 			}
+                 		}
+                 		if(specificText.contains("egg"))
+                 		{
+                 			if(mealAllergens.contains("Eggs"))
+                 			{
+                 				allergyConflict = true;
+                 			}
+                 		}
+                 		if(specificText.contains("fish"))
+                 		{
+                 			if(mealAllergens.contains("Fish"))
+                 			{
+                 				allergyConflict = true;
+                 			}
+                 		}
+                 		if(specificText.contains("prawn") || specificText.contains("shrimp") || specificText.contains("shellfish") || specificText.contains("crab") || specificText.contains("lobster"))
+                 		{
+                 			if(mealAllergens.contains("Shellfish"))
+                 			{
+                 				allergyConflict = true;
+                 			}
+                 		}
+                 		if(specificText.contains("soy") || specificText.contains("soya"))
+                 		{
+                 			if(mealAllergens.contains("Soy"))
+                 			{
+                 				allergyConflict = true;
+                 			}
+                 		}
+                 		if(specificText.contains("wheat") || specificText.contains("gluten"))
+                 		{
+                 			if(mealAllergens.contains("Wheat / Gluten"))
+                 			{
+                 				allergyConflict = true;
+                 			}
+                 		}
+                 		if(specificText.contains("sesame") || specificText.contains("ellu"))
+                 		{
+                 			if(mealAllergens.contains("Sesame"))
+                 			{
+                 				allergyConflict = true;
+                 			}
+                 		}
+                 		if(specificText.contains("coconut"))
+                 		{
+                 			if(mealAllergens.contains("Coconut"))
+                 			{
+                 				allergyConflict = true;
+                 			}
+                 		}
+                 		if(specificText.contains("mustard") || specificText.contains("kadugu"))
+                 		{
+                 			if(mealAllergens.contains("Mustard"))
+                 			{
+                 				allergyConflict = true;
+                 			}
+                 		}
+                 		// STEP 11: Reject conflicting meals
+                 		if(allergyConflict == true)
+                 		{
+                 			return "Validation Failed: Allergy conflict detected in meal: " + actualMeal.Meal_Name;
+                 		}
+                 		validatedCount = validatedCount + 1;
+                 		// Calculate nutrition using actual Zoho meal records
+                 		totalCalories = totalCalories + ifnull(actualMeal.Calories,0);
+                 		totalProtein = totalProtein + ifnull(actualMeal.Protein,0);
+                 		totalCarbohydrates = totalCarbohydrates + ifnull(actualMeal.Carbohydrates,0);
+                 		totalFat = totalFat + ifnull(actualMeal.Fat,0);
+                 	}
+                 	// STEP 12: Fetch latest user preferences
+                 	dietaryRecord = Dietary_Preferences[User == userId] sort by Created_Date desc range from 0 to 0;
+                 	fitnessRecord = Fitness_Goals[User == userId] sort by Created_Date desc range from 0 to 0;
+                 	if(dietaryRecord.count() == 0 || fitnessRecord.count() == 0)
+                 	{
+                 		return "Validation Passed, but user preferences or fitness goals are missing.";
+                 	}
+                 	// STEP 13: Prepare plan dates
+                 	startDate = zoho.currentdate;
+                 	planDuration = 1;
+                 	endDate = startDate.addDay(planDuration - 1);
+                 	// STEP 14: Create parent Meal_Plans record
+                 	planID = insert into Meal_Plans
+                 	[
+                 		Plan_Name="AI Personalized Meal Plan - " + startDate.toString()
+                 		User=userId
+                 		Plan_Description=mealPlan.get("plan_explanation")
+                 		Plan_Type="AI Generated"
+                 		Fitness_Goal=fitnessRecord.Primary_Fitness_Goal
+                 		Start_Date=startDate
+                 		End_Date=endDate
+                 		Plan_Duration_Days=planDuration
+                 		Daily_Calorie_Target_kcal=ifnull(dietaryRecord.Daily_Calorie_Goal,0)
+                 		Daily_Protein_Target_grams=0
+                 		Daily_Carbohydrate_Target_grams=0
+                 		Daily_Fat_Target_grams=0
+                 		Plan_Status="Pending Review"
+                 		Created_Date=zoho.currenttime
+                 		Added_User=zoho.loginuser
+                 	];
+                 	info Meal_Plans[ID == planID];
+                 	info "NEW MEAL PLAN ID: " + planID;
+                 	if(planID == null)
+                 	{
+                 		return "Validation Passed, but Meal Plan creation failed.";
+                 	}
+                 	// STEP 15: Create child Meal_Plan_Details records
+                 	detailCount = 0;
+                 	for each  meal in recommendedMeals
+                 	{
+                 		mealId = meal.get("meal_id").toLong();
+                 		actualMeal = Meals[ID == mealId];
+                 		detailID = insert into Meal_Plan_Details
+                 		[
+                 			Meal_Plan=planID
+                 			Meals=mealId
+                 			User=userId
+                 			Scheduled_Date=startDate
+                 			Day_Number=1
+                 			Meal_Type=actualMeal.Meal_Category
+                 			Serving_Quantity=1
+                 			Added_User=zoho.loginuser
+                 		];
+                 		if(detailID != null)
+                 		{
+                 			detailCount = detailCount + 1;
+                 		}
+                 	}
+                 	// STEP 16: Final result
+                 	if(detailCount != validatedCount)
+                 	{
+                 		return "Meal Plan created, but only " + detailCount + " of " + validatedCount + " meal details were saved. Please review the records.";
+                 	}
+                 	return "SUCCESS! Meal Plan created successfully. Plan ID: " + planID + ". Validated meals saved: " + detailCount + ". Status: Pending Review.";
+                 }
+			 }
+		 }
+
+
+		workflow
+		{
+		form
+		{
+			Auto_Fill_Meal_Plan_Infor as "Auto Fill Meal Plan Information"
+			{
+				type =  form
+				form = Meal_Plan_Details
+
+				record event = on add or edit
+
+				on user input of Meal_Plan
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Meal_Plan != null)
+										{
+											selectedPlan = Meal_Plans[ID == input.Meal_Plan];
+											input.User = selectedPlan.User;
+											input.Start_Date = selectedPlan.Start_Date;
+											input.End_Date = selectedPlan.End_Date;
+										}
+						)
+					}
+				}
+
+			}
+			Auto_Assign_Logged_In_Use as "Auto Assign Logged In User"
+			{
+				type =  form
+				form = Meal_Plans
+
+				record event = on add
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											loggedInEmail = zoho.loginuserid;
+										userRecord = Users[Email == loggedInEmail];
+										if(userRecord.count() > 0)
+										{
+											input.User = userRecord.ID;
+										}
+						)
+					}
+				}
+
+			}
+			Analyze_Food_Label_With_G as "Analyze_Food_Label_With_Gemini"
+			{
+				type =  form
+				form = Food_Scanner
+
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ocrText = ifnull(input.OCR,"");
+										if(ocrText.trim() == "")
+										{
+											input.OCR_Status = "Failed";
+											input.AI_Analysis = "OCR output is empty. Please check the uploaded image and try again.";
+										}
+										else
+										{
+											input.OCR_Status = "Processing";
+											prompt = "You are a nutrition analysis assistant for a Personalized Diet Recommendation System. " + "Analyze the following text extracted from a food nutrition label. " + "Identify the food name, brand, serving size, calories, protein, carbohydrates, fat, fibre, sugar, sodium and ingredients if available. " + "Explain the nutritional value in simple language. " + "Mention possible allergens only when supported by the extracted text. " + "Do not invent missing nutritional values. Clearly mention any unreadable or missing information. " + "Do not provide medical diagnoses.\n\n" + "FOOD LABEL TEXT:\n" + ocrText;
+											part = Map();
+											part.put("text",prompt);
+											parts = List();
+											parts.add(part);
+											content = Map();
+											content.put("parts",parts);
+											contents = List();
+											contents.add(content);
+											payload = Map();
+											payload.put("contents",contents);
+											response = invokeurl
+											[
+												url :"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent"
+												type :POST
+												body:payload.toString()
+												headers:{"Content-Type":"application/json"}
+												detailed:true
+												connection:"gemini_admin_connection"
+											];
+											responseMap = response.toMap();
+											responseCode = responseMap.get("responseCode");
+											if(responseCode == 200)
+											{
+												responseBody = responseMap.get("responseText");
+												candidates = responseBody.get("candidates");
+												if(candidates != null && candidates.size() > 0)
+												{
+													candidate = candidates.get(0);
+													responseParts = candidate.get("content").get("parts");
+													if(responseParts != null && responseParts.size() > 0)
+													{
+														analysisText = responseParts.get(0).get("text");
+														input.AI_Analysis = analysisText;
+														input.OCR_Status = "Completed";
+													}
+													else
+													{
+														input.OCR_Status = "Failed";
+														input.AI_Analysis = "Gemini returned an empty analysis.";
+													}
+												}
+												else
+												{
+													input.OCR_Status = "Failed";
+													input.AI_Analysis = "Gemini returned no analysis.";
+												}
+											}
+											else
+											{
+												input.OCR_Status = "Failed";
+												input.AI_Analysis = "Gemini API error: " + response.toString();
+											}
+										}
+						)
+					}
+				}
+
+			}
+		}
+
+		schedule
+		{
+			Daily_Pending_Meal_Remind as "Daily_Pending_Meal_Reminder"
+			{
+				type =  schedule
+				start = "2026-11-09 10:30:00"
+				frequency = daily
+				time zone = "Asia/Kolkata"
+				on start
+				{
+					actions 
+					{
+					on load
+					(
+						pendingPlans = Meal_Plans[Plan_Status == "Pending Review"];
+										pendingCount = pendingPlans.count();
+										if(pendingCount > 0)
+										{
+											sendmail
+											[
+												from :zoho.adminuserid
+												to :"ragavi.n.2024.cse@rajalakshmi.edu.in"
+												subject :"Daily Reminder - Pending AI Meal Plans"
+												message :"Hello Admin,<br><br>" + "There are <b>" + pendingCount + "</b> meal plans waiting for your review.<br><br>" + "Please log in to Zoho Creator and open the Meal Plans report to review and approve them.<br><br>" + "Regards,<br>Personalized Diet Recommendation System"
+											]
+										}
+					)
+					}
+				}
+			}
+			Weekly_User_Diet_Progress as "Weekly User Diet Progress Report"
+			{
+				type =  schedule
+				start = "2026-11-09 17:36:09"
+				frequency = weekly
+				time zone = "Asia/Kolkata"
+				on start
+				{
+					actions 
+					{
+					on load
+					(
+						// Weekly Diet Progress Report
+										for each  userRecord in Users
+										{
+											userEmail = userRecord.Email;
+											userName = userRecord.User_Name;
+											if(userEmail != null && userEmail != "")
+											{
+												sendmail
+												[
+													from :zoho.adminuserid
+													to :userEmail
+													subject :"Your Weekly Diet Progress Reminder"
+													message :"Hello " + userName + ",<br><br>" + "Your weekly diet progress reminder is here!<br><br>" + "Please follow your assigned meal plan, maintain healthy eating habits " + "and stay focused on your fitness goal.<br><br>" + "Log in to your Personalized Diet Recommendation System " + "to view your meal plan.<br><br>" + "Best wishes,<br>Diet Recommendation Team"
+												]
+											}
+										}
+					)
+					}
+				}
+			}
+			Pending_Plan_Followup_Ale as "Pending_Plan_Followup_Alert"
+			{
+				type =  schedule
+				start = "2026-11-09 17:41:08"
+				frequency = daily
+				time zone = "Asia/Kolkata"
+				on start
+				{
+					actions 
+					{
+					on load
+					(
+						// Pending Diet Plan Follow-up Alert
+										pendingPlans = Meal_Plans[Plan_Status == "Pending Review"];
+										pendingCount = 0;
+										pendingDetails = "";
+										for each  plan in pendingPlans
+										{
+											if(plan.Added_Time <= zoho.currenttime.addDay(-2))
+											{
+												pendingCount = pendingCount + 1;
+												pendingDetails = pendingDetails + "<br>Plan: " + plan.Plan_Name + "<br>User: " + plan.User + "<br>-------------------------<br>";
+											}
+										}
+										if(pendingCount > 0)
+										{
+											sendmail
+											[
+												from :zoho.adminuserid
+												to :"ragavi.n.2024.cse@rajalakshmi.edu.in"
+												subject :"Urgent: Pending Diet Plan Follow-up"
+												message :"Hello Admin,<br><br>" + pendingCount + " meal plans have been pending for more than two days.<br><br>" + pendingDetails + "<br>Please review these plans in the Meal Plans report."
+											]
+										}
+					)
+					}
+				}
+			}
+		}
+
+		approval
+		{
+			Meal_Plan_Approval as "Meal_Plan_Approval"
+			{
+				type =  approval
+				form = Meal_Plans
+				display fields = [Plan_Name,User,Plan_Description,Plan_Type,Fitness_Goal,Start_Date,End_Date]
+				on start
+				{
+				}
+				on level 1
+				{
+					on approve 
+					{
+		    			display name = "Approve Meal Plan"
+						actions 
+						{
+							sendmail
+							(
+								from : zoho.loginuserid
+								to : approver.submitter
+								subject : "Approval Request"
+								message : "Your request has been approved."
+							)
+						}
+						actions 
+						{
+						on load
+						(
+							input.Plan_Status = "Approved";
+						)
+						}
+					}
+					on reject
+					{
+						display name =  "Reject Meal Plan"
+						actions 
+						{
+							sendmail
+							(
+								from : zoho.loginuserid
+								to : approver.submitter
+								subject : "Approval Request"
+								message : "Your request has been rejected."
+							)
+						}
+						actions 
+						{
+						on load
+						(
+							input.Plan_Status = "Rejected";
+						)
+						}
+					}
+				}
+			}
+		}
+
+		blueprint
+		{
+    			Meal_Plans_Approval_Blueprint as "Meal Plan Approval Lifecycle"
+    			{
+        			type = Blueprint
+        			form = Meal_Plans
+        			start
+        			{
+            			start stage = "Pending Review"
+        			}
+        			stages
+        			{
+           			"Pending Review"
+           			{
+           			}
+           			"Approved"
+           			{
+           			}
+           			"Rejected"
+           			{
+           			}
+        			}
+        			transitions
+        			{
+    				approve_meal_plan as "Approve Meal Plan"
+    				{
+         				type = normal
+         				from stage = "Pending Review"
+         				to stage = "Approved"
+         				before
+         				{
+            				transition owner
+            				(
+                				permissions = {"Administrator"}
+                				userfields = {User}
+             				)
+         				}
+         				after
+         				{
+							actions 
+							{
+								custom deluge script
+								(
+															// Fetch the current record being processed
+														record = Meal_Plans[ID == input.ID];
+														// Update Reviewed_By with the logged-in administrator's email
+														if(zoho.adminuserid != null)
+														{
+															record.Reviewed_By=zoho.adminuserid;
+														}
+														// Update Review_Date with the current date and time
+														record.Review_Date=zoho.currenttime;
+														// Note: Admin_Comments is optional and will retain its existing value if not provided
+								)
+							}
+         				}
+  				}
+    				reject_meal_plan as "Reject Meal Plan"
+    				{
+         				type = normal
+         				from stage = "Pending Review"
+         				to stage = "Rejected"
+         				before
+         				{
+            				transition owner
+            				(
+                				permissions = {"Administrator"}
+                				userfields = {User}
+             				)
+         				}
+         				after
+         				{
+							actions 
+							{
+								custom deluge script
+								(
+															// Validate that Admin_Comments is provided
+														if(input.Admin_Comments.isBlank())
+														{
+															info "Error: Admin_Comments is mandatory and cannot be empty.";
+															// Optionally, you can disable the submit button or show an alert
+															// alert "Admin Comments are required.";
+														}
+														else
+														{
+															// Fetch the current logged-in user's email
+															adminEmail = zoho.loginuserid;
+															// Get the current date and time
+															currentDateTime = now;
+															// Update the Reviewed_By field with the admin's email
+															input.Reviewed_By = adminEmail;
+															// Update the Review_Date field with the current date and time
+															input.Review_Date = currentDateTime;
+															// The Admin_Comments field is already populated from input
+															// No explicit update needed as input values are automatically saved on form submission
+															info "Review details updated successfully. Reviewed_By: " + input.Reviewed_By + ", Review_Date: " + input.Review_Date;
+														}
+								)
+							}
+         				}
+  				}
+        			}
+    			}
+    			Food_Scanner_Processing as "Food Scanner Processing"
+    			{
+        			type = Blueprint
+        			form = Food_Scanner
+        			start
+        			{
+            			start stage = "Pending"
+        			}
+        			stages
+        			{
+           			"Failed"
+           			{
+           			}
+           			"Completed"
+           			{
+           			}
+           			"Pending"
+           			{
+           			}
+           			"Processing"
+           			{
+           			}
+        			}
+        			transitions
+        			{
+    				complete_analysis as "Complete Analysis"
+    				{
+         				type = normal
+         				from stage = "Processing"
+         				to stage = "Completed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				mark_failed as "Mark Failed"
+    				{
+         				type = normal
+         				from stage = "Processing"
+         				to stage = "Failed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				retry_processing as "Retry"
+    				{
+         				type = normal
+         				from stage = "Failed"
+         				to stage = "Processing"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				start_processing as "Start Processing"
+    				{
+         				type = normal
+         				from stage = "Pending"
+         				to stage = "Processing"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+        			}
+    			}
+		}
+
+		batchworkflow
+		{
+			Bulk_User_Diet_Reminder
+			{
+    			display name = "Bulk_User_Diet_Reminder"
+    			type = batchworkflow
+    			form = Users
+    			event = "On Schedule"
+    			start = "09-Nov-2026 17:51:43"
+    			frequency = once
+    			batch size = 1000
+    			status = active
+    			on execute 
+    			{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Email != null && input.Email != "")
+										{
+											sendmail
+											[
+												from :zoho.adminuserid
+												to :input.Email
+												subject :"Weekly Diet Plan Reminder"
+												message :"Hello " + input.User_Name + ",<br><br>" + "Please log in to your Personalized Diet Recommendation System " + "and review your personalized diet plan.<br><br>" + "Stay healthy!<br>" + "Diet Recommendation Team"
+											]
+										}
+						)
+					}
+    			}
+			}
+		}
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:false, PIIAccess:false, ePHIAccess:false}
+				description = "This profile will have read permission for all components\n"
+				ModulePermissions
+				{
+					Food_Scanner
+					{
+						allFieldsVisible= true 
+					}
+					Fitness_Goals
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Fitness_Goals_Report={"View"}
+						}
+					}
+					Dietary_Preferences
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Dietary_Preferences_Report={"View"}
+						}
+					}
+					Users
+					{
+						enabled= Create,Tab,read_comm 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Users_List={"View"}
+						}
+					}
+					Meal_Plan_Details
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Meal_Plan_Details_Report={"View"}
+						}
+					}
+					Meals
+					{
+						allFieldsVisible= true 
+					}
+					Health_Profile
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Health_Profile_Report={"View"}
+						}
+					}
+					Meal_Plans
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Meal_Plans={"View"}
+						}
+					}
+					User_Dashboard
+					{
+						enabled = tab
+					}
+				}
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:false, PIIAccess:true, ePHIAccess:false}
+				description = "This profile will have write permission for all components\n"
+				ModulePermissions
+				{
+					Food_Scanner
+					{
+						allFieldsVisible= true 
+					}
+					Fitness_Goals
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab,read_comm,write_comm,create_new_report 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Fitness_Goals_Report={"View","Edit","Delete"}
+						}
+					}
+					Dietary_Preferences
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab,read_comm,write_comm,create_new_report 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Dietary_Preferences_Report={"View","Edit","Delete"}
+						}
+					}
+					Users
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab,read_comm,write_comm,create_new_report 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Users_List={"View","Edit","Delete"}
+						}
+					}
+					Meal_Plan_Details
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab,read_comm,write_comm,create_new_report 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Meal_Plan_Details_Report={"View","Edit","Delete"}
+						}
+					}
+					Meals
+					{
+						allFieldsVisible= true 
+					}
+					Health_Profile
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab,read_comm,write_comm,create_new_report 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							Health_Profile_Report={"View","Edit","Delete"}
+						}
+					}
+					Meal_Plans
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab,read_comm,write_comm,create_new_report 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Meal_Plans={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+					"Standard User"
+					{
+						description = ""
+					}
+				}
+			}
+	}
+
+	customize
+	{
+		icon
+		{
+			text = "PDR"
+			background color = "theme"
+			foreground color = "#ffffff"
+		}
+	}
+
+	connectors
+	{
+		gemini_ai_connector
+		(
+			displayname = "Gemini AI Connector"
+			description = "Connects Google Gemini API with Zoho Creator for personalized meal recommendations."
+			auth type = "api_key"
+			configurations
+			(
+				parameters = [{"key":"x-goog-api-key","displayname":"Gemini API Key","location":"header"}]
+			)
+		)
+	}
+	connections
+	{
+		gemini_admin_connection
+		(
+			displayname = "Gemini_Admin_Connection"
+			custom connector = gemini_ai_connector
+		)
+		zoho_crm_connection
+		(
+			displayname = "Zoho_CRM_Connection"
+			user access = true
+			connector = zohocrm1
+			permissions = {"search_purchase_orders_record","sync_invoices_record","sync_deals_record","sync_contacts_record","sync_cases_record","sync_campaigns_record","sync_accounts_record","search_vendors_record","search_solutions_record","search_sales_orders_record","search_quotes_record","sync_leads_record","search_products_record","search_leads_record","search_invoices_record","search_deals_record","search_contacts_record","search_cases_record","search_campaigns_record","search_accounts_record","list_all","update_contacts_record","update_vendors_record","update_solutions_record","update_sales_orders_record","update_quotes_record","update_purchase_orders_record","update_products_record","update_leads_record","update_invoices_record","update_deals_record","get_modules","update_cases_record","update_campaigns_record","update_accounts_record","sync_vendors_record","sync_solutions_record","sync_sales_orders_record","sync_quotes_record","sync_purchase_orders_record","sync_products_record","create_sales_orders_record","fetch_all_leads_records","fetch_all_invoices_records","fetch_all_deals_records","fetch_all_contacts_records","fetch_all_cases_records","fetch_all_campaigns_records","fetch_all_accounts_records","fetch_accounts_record","create_vendors_record","create_solutions_record","fetch_all_products_records","create_quotes_record","create_purchase_orders_record","create_products_record","create_leads_record","create_invoices_record","create_deals_record","create_contacts_record","create_cases_record","create_campaigns_record","fetch_invoices_record","fetch_vendors_record","fetch_users","fetch_solutions_record","fetch_signals","fetch_sales_orders_record","fetch_quotes_record","fetch_purchase_orders_record","fetch_products_record","fetch_leads_record","create_accounts_record","fetch_deals_record","fetch_contacts_record","fetch_cases_record","fetch_campaigns_record","fetch_all_vendors_records","fetch_all_solutions_records","fetch_all_sales_orders_records","fetch_all_quotes_records","fetch_all_purchase_orders_records"}
+		)
+	}
+	web
+	{
+		forms
+		{
+			form Dietary_Preferences
+			{
+				label placement = left
+			}
+			form Fitness_Goals
+			{
+				label placement = left
+			}
+			form Food_Scanner
+			{
+				label placement = left
+			}
+			form Health_Profile
+			{
+				label placement = left
+			}
+			form Meal_Plan_Details
+			{
+				label placement = left
+			}
+			form Meal_Plans
+			{
+				label placement = left
+			}
+			form Meals
+			{
+				label placement = left
+			}
+			form Users
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report Users_List
+			{
+				quickview
+				(
+					layout
+					(
+						Users_List
+						(
+							fields
+							(
+								User_Name as "User Name"
+								Email
+								Phone_Number as "Phone Number"
+								Gender
+								Role
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						User_Details
+						(
+		     				title = "User Details"
+							fields
+							(
+								User_Name as "User Name"
+								Email
+								Phone_Number as "Phone Number"
+								Date_of_Birth as "Date of Birth"
+								Gender
+								Height
+								Weight
+								Activity_Level as "Activity Level"
+								BMI
+								Role
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report All_Meal_Plans
+			{
+				quickview
+				(
+					layout
+					(
+						displaylayout = "classic"
+						datablock1
+						(
+							fields
+							(
+								ID
+								Plan_Name as "Plan Name"
+								End_Date as "End Date"
+								Plan_Status as "Plan Status"
+								Plan_Type as "Plan Type"
+								Fitness_Goal as "Fitness Goal"
+								Start_Date as "Start Date"
+								Created_Date as "Created Date"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Plan_Name as "Plan Name"
+								User
+								Plan_Description as "Plan Description"
+								Plan_Type as "Plan Type"
+								Fitness_Goal as "Fitness Goal"
+								Start_Date as "Start Date"
+								End_Date as "End Date"
+								Plan_Duration_Days as "Plan Duration (Days)"
+								Daily_Calorie_Target_kcal as "Daily Calorie Target (kcal)"
+								Daily_Protein_Target_grams as "Daily Protein Target (grams)"
+								Daily_Carbohydrate_Target_grams as "Daily Carbohydrate Target (grams)"
+								Daily_Fat_Target_grams as "Daily Fat Target (grams)"
+								Plan_Status as "Plan Status"
+								Admin_Comments as "Admin Comments"
+								Reviewed_By as "Reviewed By"
+								Review_Date as "Review Date"
+								Created_Date as "Created Date"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Meal_Plan_Details_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Meal_Plan as "Meal Plan"
+								Scheduled_Date as "Scheduled Date"
+								Day_Number as "Day Number"
+								Meal_Type as "Meal Type"
+								Serving_Quantity as "Serving Quantity"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Meal_Plan as "Meal Plan"
+								Meals
+								User
+								Start_Date as "Start Date"
+								End_Date as "End Date"
+								Scheduled_Date as "Scheduled Date"
+								Day_Number as "Day Number"
+								Meal_Type as "Meal Type"
+								Serving_Quantity as "Serving Quantity"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Dietary_Preferences_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Preferred_Staple_Foods as "Preferred Staple Foods"
+								User
+								Spice_Preference as "Spice Preference"
+								Daily_Calorie_Goal as "Daily Calorie Goal"
+								Preferred_Lunch_Foods as "Preferred Lunch Foods"
+								Preferred_Breakfast_Foods as "Preferred Breakfast Foods"
+								Preferred_Food_Style as "Preferred Food Style"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Preferred_Staple_Foods as "Preferred Staple Foods"
+								User
+								Spice_Preference as "Spice Preference"
+								Daily_Calorie_Goal as "Daily Calorie Goal"
+								Preferred_Lunch_Foods as "Preferred Lunch Foods"
+								Preferred_Breakfast_Foods as "Preferred Breakfast Foods"
+								Preferred_Food_Style as "Preferred Food Style"
+								Disliked_Foods as "Disliked Foods"
+								Additional_Food_Preferences as "Additional Food Preferences"
+								Diet_Type as "Diet Type"
+								Non_Vegetarian_Food_Preferences as "Non-Vegetarian Food Preferences"
+								Preferred_Meals_Per_Day as "Preferred Meals Per Day"
+								Preferred_Dinner_Foods as "Preferred Dinner Foods"
+								Created_Date as "Created Date"
+								Dietary_Restrictions as "Dietary Restrictions"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Fitness_Goals_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								User
+								Preferred_Physical_Activities as "Preferred Physical Activities"
+								Daily_Activity_Duration_Minutes as "Daily Activity Duration Minutes"
+								Primary_Fitness_Goal as "Primary Fitness Goal"
+								Motivation_Goal_Description as "Motivation Goal Description"
+								Additional_Notes as "Additional Notes"
+								Current_Fitness_Level as "Current Fitness Level"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								User
+								Preferred_Physical_Activities as "Preferred Physical Activities"
+								Daily_Activity_Duration_Minutes as "Daily Activity Duration Minutes"
+								Primary_Fitness_Goal as "Primary Fitness Goal"
+								Motivation_Goal_Description as "Motivation Goal Description"
+								Additional_Notes as "Additional Notes"
+								Current_Fitness_Level as "Current Fitness Level"
+								Target_Weight_kg as "Target Weight kg"
+								Target_Achievement_Date as "Target Achievement Date"
+								Created_Date as "Created Date"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Health_Profile_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								User
+								Allergen_Categories as "Allergen Categories"
+								Specific_Allergens as "Specific Allergens"
+								Reaction_Symptoms as "Reaction Symptoms"
+								Allergy_Severity as "Allergy Severity"
+								Additional_Notes as "Additional Notes"
+								Diagnosis_Status as "Diagnosis Status"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								User
+								Allergen_Categories as "Allergen Categories"
+								Specific_Allergens as "Specific Allergens"
+								Reaction_Symptoms as "Reaction Symptoms"
+								Allergy_Severity as "Allergy Severity"
+								Additional_Notes as "Additional Notes"
+								Diagnosis_Status as "Diagnosis Status"
+								Has_Food_Allergies as "Has Food Allergies"
+								Condition_Categories as "Condition Categories"
+								Specific_Conditions as "Specific Conditions"
+								Dietary_Considerations as "Dietary Considerations"
+								Created_Date as "Created Date"
+								Has_Health_Conditions as "Has Health Conditions"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Meals_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Meal_Image as "Meal Image"
+								Meal_Name as "Meal Name"
+								Meal_Category as "Meal Category"
+								Main_Ingredients as "Main Ingredients"
+								Food_Type as "Food Type"
+								Recipe_Instructions as "Recipe Instructions"
+								Preparation_Method as "Preparation Method"
+								Cuisine
+								Carbohydrates as "Carbohydrates grams"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Carbohydrates as "Carbohydrates grams"
+								Cuisine
+								Recipe_Instructions as "Recipe Instructions"
+								Meal_Image as "Meal Image"
+								Main_Ingredients as "Main Ingredients"
+								Food_Type as "Food Type"
+								Preparation_Method as "Preparation Method"
+								Contains_Allergens as "Contains Allergens"
+								Availability_Status as "Availability Status"
+								Meal_Description as "Meal Description"
+								Calories as "Calories kcal"
+								Protein as "Protein grams"
+								Additional_Notes as "Additional Notes"
+								Meal_Name as "Meal Name"
+								Serving_Size as "Serving Size grams"
+								Fat as "Fat grams"
+								Fibre as "Fibre grams"
+								Meal_Category as "Meal Category"
+								Created_Date as "Created Date"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report All_Food_Scanners
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Food_Label_Image as "Food Label Image"
+								AI_Analysis as "AI Analysis"
+								OCR_Status as "OCR Status"
+								OCR
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Food_Label_Image as "Food Label Image"
+								AI_Analysis as "AI Analysis"
+								OCR_Status as "OCR Status"
+								OCR
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "tech-desktop"
+
+				section ZC_App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section ZC_Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section Users_Section
+				{
+					displayname = "Users"
+					icon = "users-2-woman"
+					form  Users
+					{
+						icon = "users-2-woman"
+					}
+					report Users_List
+					{
+						icon = "users-2-woman"
+					}
+				}
+				section Dietary_Preferences_Section
+				{
+					displayname = "Dietary Preferences"
+					icon = "health-apple"
+					form  Dietary_Preferences
+					{
+						icon = "health-apple"
+					}
+					report Dietary_Preferences_Report
+					{
+						icon = "tech-2-p-heart"
+					}
+				}
+				section Health_Profile_Menu
+				{
+					displayname = "Health Profile"
+					icon = "health-woman"
+					form  Health_Profile
+					{
+						icon = "health-woman"
+					}
+					report Health_Profile_Report
+					{
+						icon = "health-woman"
+					}
+				}
+				section Fitness_Goals_Section
+				{
+					displayname = "Fitness Goals"
+					icon = "business-goal-64"
+					form  Fitness_Goals
+					{
+						icon = "business-goal-64"
+					}
+					report Fitness_Goals_Report
+					{
+						icon = "business-goal-64"
+					}
+				}
+				section Meals_Section
+				{
+					displayname = "Meals"
+					icon = "food-course"
+					form  Meals
+					{
+						icon = "food-course"
+					}
+					report Meals_Report
+					{
+						icon = "food-course"
+					}
+				}
+				section Meal_Plans
+				{
+					displayname = "Meal Plans"
+					icon = "food-course"
+					form  Meal_Plans
+					{
+						icon = "food-course"
+					}
+					report All_Meal_Plans
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Meal_Plan_Details
+				{
+					displayname = "Meal Plan Details"
+					icon = "shopping-delivery-track"
+					form  Meal_Plan_Details
+					{
+						icon = "shopping-delivery-track"
+					}
+					report Meal_Plan_Details_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section User_Dashboard
+				{
+					displayname = "User Dashboard"
+					icon = "users-2-woman"
+					page User_Dashboard
+					{
+						icon = "users-2-woman"
+					}
+				}
+				section Food_Scanners
+				{
+					displayname = "Food Scanners"
+					icon = "nature-food"
+					form  Food_Scanner
+					{
+						icon = "nature-food"
+					}
+					report All_Food_Scanners
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+					show = {space,section,component}
+				}
+			}
+		}
+		customize
+		{
+			font = "lato"
+			color options
+			{
+				color = "11"
+			}
+			logo
+			{
+				preference = "app_icon"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		customize
+		{
+			layout = twocolumn
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = chryslerpurple
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = turquoise
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}
